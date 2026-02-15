@@ -27,7 +27,7 @@ public static class Task2
 
         for (var k = 0; k < coefficients.Length; k++)
         {
-            if (Math.Abs(coefficients[k]) < EPS) continue;
+            if (Math.Abs(coefficients[k]) < Auxiliary.EPS) continue;
             
             if (!first) Console.Write(" + ");
                     
@@ -50,7 +50,7 @@ public static class Task2
 
         for (var k = 0; k <= n; k++)
         {
-            result[k] = current.Evaluate(a) / Functions.Factorial(k);
+            result[k] = current.Evaluate(a) / Auxiliary.Factorial(k);
             current = current.Derivative();
         }
 

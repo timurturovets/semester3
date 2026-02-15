@@ -19,7 +19,7 @@ public class RationalFunction
         var fA = Numerator.Evaluate(A);
         var gA = Denominator.Evaluate(A);
 
-        if (Math.Abs(gA) > Polynomial.EPS) return Limit.Finite(fA / gA);
+        if (Math.Abs(gA) > Auxiliary.EPS) return Limit.Finite(fA / gA);
 
         var fDer = Numerator.Derivative();
         var gDer = Denominator.Derivative();

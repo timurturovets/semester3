@@ -3,7 +3,6 @@
 public class Polynomial(IEnumerable<double> degrees)
 {
     // ReSharper disable once InconsistentNaming
-    public const double EPS = 1e-9;
     private readonly List<double> _coefficients = degrees.ToList();
     public int Degree => _coefficients.Count - 1;
 
@@ -141,7 +140,7 @@ public class Polynomial(IEnumerable<double> degrees)
     {
         for (var i = 0; i <= Degree; i++)
         {
-            if (Math.Abs(this[i]) > EPS) return false;
+            if (Math.Abs(this[i]) > Auxiliary.EPS) return false;
         }
 
         return true;

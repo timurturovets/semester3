@@ -30,9 +30,9 @@ public class PoweredRationalFunction
         var f1Val = Math.Pow(F1.Evaluate(inner1), K);
         var f2Val = Math.Pow(F2.Evaluate(inner2), L);
 
-        if (Math.Abs(f2Val) > Polynomial.EPS) return Limit.Finite(f1Val / f2Val);
+        if (Math.Abs(f2Val) > Auxiliary.EPS) return Limit.Finite(f1Val / f2Val);
         
-        if (Math.Abs(f1Val) >  Polynomial.EPS) return f1Val > 0 
+        if (Math.Abs(f1Val) >  Auxiliary.EPS) return f1Val > 0 
             ? Limit.PositiveInfinity()
             : Limit.NegativeInfinity();
 

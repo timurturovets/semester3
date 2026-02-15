@@ -29,14 +29,14 @@ public static class Task3
         {
             var c = shiftedPolynomial[k];
 
-            if (Math.Abs(c) < Polynomial.EPS) continue;
+            if (Math.Abs(c) < Auxiliary.EPS) continue;
 
             if (!first) Console.Write(c >= 0 ? " + " : " - ");
             else if (c < 0) Console.Write("-");
 
             var absC = Math.Abs(c);
 
-            if (!(Math.Abs(absC - 1) < Polynomial.EPS && k != 0))
+            if (!(Math.Abs(absC - 1) < Auxiliary.EPS && k != 0))
             {
                 Console.Write($"{absC}");
             }
@@ -63,7 +63,7 @@ public static class Task3
         {
             for (var i = 0; i <= j; i++)
             {
-                newCoefficients[i] += f[j] * Functions.CombinationsCount(j, i) * Math.Pow(delta, j - i);
+                newCoefficients[i] += f[j] * Auxiliary.CombinationsCount(j, i) * Math.Pow(delta, j - i);
             }
         }
         

@@ -4,6 +4,7 @@ using task2;
 using task3;
 using task4;
 using task5;
+using task6;
 
 internal static class Program
 {
@@ -18,6 +19,7 @@ internal static class Program
             Task3.Run,
             Task4.Run,
             Task5.Run,
+            Task6.Run,
         };
         
         while (true)
@@ -28,6 +30,7 @@ internal static class Program
             Console.WriteLine("3. Представление многочлена по степеням (x - B)");
             Console.WriteLine("4. Нахождение пределов рациональной функции R(x) = f(x)/g(x)");
             Console.WriteLine("5. Нахождение пределов рациональной функции T(x) = f1^k(s1(x))/f2^k(s2(x))");
+            Console.WriteLine("6. Нахождение асимптотического решения рекуррентного соотношения T(x) = αT(x/β) + x");
             Console.WriteLine("0. Выход");
 
             int choice;

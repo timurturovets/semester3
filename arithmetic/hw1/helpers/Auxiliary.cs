@@ -1,7 +1,9 @@
 ﻿namespace helpers;
 
-public static class Functions
+public static class Auxiliary
 {
+    // ReSharper disable once InconsistentNaming
+    public const double EPS = 1e-9;
     public static int Factorial(int n)
     {
         if (n == 0) return 1;

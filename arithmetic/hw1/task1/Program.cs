@@ -1,7 +1,7 @@
 ﻿namespace task1;
 
 using helpers;
-using static helpers.Polynomial;
+
 // ReSharper disable file InconsistentNaming
 public static class Task1
 {
@@ -42,7 +42,7 @@ public static class Task1
             var first = true;
             for (var l = 0; l < coefficients!.Length; l++)
             {
-                if (Math.Abs(coefficients[l]) < EPS) continue;
+                if (Math.Abs(coefficients[l]) < Auxiliary.EPS) continue;
                 
                 if (!first) Console.Write(" + ");
                 
@@ -78,7 +78,7 @@ public static class Task1
             var pivot = -1;
             for (var i = rank; i < n; i++)
             {
-                if (!(Math.Abs(aug[i, col]) > EPS)) continue;
+                if (!(Math.Abs(aug[i, col]) > Auxiliary.EPS)) continue;
                 pivot = i;
                 break;
             }
@@ -112,7 +112,7 @@ public static class Task1
 
         for (var i = rank; i < n; i++)
         {
-            if (Math.Abs(aug[i, m]) > EPS) return (false, null);
+            if (Math.Abs(aug[i, m]) > Auxiliary.EPS) return (false, null);
         }
 
         var solution = new double[m];
@@ -121,7 +121,7 @@ public static class Task1
         {
             for (var j = 0; j < m; j++)
             {
-                if (!(Math.Abs(aug[i, j] - 1) < EPS)) continue;
+                if (!(Math.Abs(aug[i, j] - 1) < Auxiliary.EPS)) continue;
                 solution[j] = aug[i, m];
                 break;
             }
