@@ -20,7 +20,7 @@ public class Polynomial(IEnumerable<double> degrees)
             coefficients.Add(p1[i] + p2[i]);
         }
 
-        for (; i < bigger.Degree; i++)
+        for (; i < bigger.Degree + 1; i++)
         {
             coefficients.Add(bigger[i]);
         }
@@ -31,7 +31,7 @@ public class Polynomial(IEnumerable<double> degrees)
     public static Polynomial operator *(Polynomial p, double scalar)
     {
         var coefficients = new List<double>();
-        for (var i = 0; i < p.Degree; i++)
+        for (var i = 0; i < p.Degree + 1; i++)
         {
             coefficients.Add(p[i] * scalar);
         }
@@ -135,5 +135,15 @@ public class Polynomial(IEnumerable<double> degrees)
         }
         
         return new Polynomial(coefficients);
+    }
+
+    public bool IsZero()
+    {
+        for (var i = 0; i <= Degree; i++)
+        {
+            if (Math.Abs(this[i]) > EPS) return false;
+        }
+
+        return true;
     }
 }

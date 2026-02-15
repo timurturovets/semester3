@@ -2,6 +2,7 @@
 using task1;
 using task2;
 using task3;
+using task4;
 
 internal static class Program
 {
@@ -13,7 +14,8 @@ internal static class Program
         {
             Task1.Run,
             Task2.Run,
-            Task3.Run
+            Task3.Run,
+            Task4.Run,
         };
         
         while (true)
@@ -22,6 +24,7 @@ internal static class Program
             Console.WriteLine("1. Определение принадлежности многочлена линейной оболочке");
             Console.WriteLine("2. Представление многочлена в виде линейной комбинации степеней");
             Console.WriteLine("3. Представление многочлена по степеням (x - B)");
+            Console.WriteLine("4. Нахождение пределов рациональной функции R(x) = f(x)/g(x)");
             Console.WriteLine("0. Выход");
 
             int choice;
