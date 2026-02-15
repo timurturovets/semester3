@@ -5,6 +5,7 @@ using task4;
 using task5;
 using task6;
 using task7;
+using task8;
 
 namespace Application;
 
@@ -23,6 +24,7 @@ internal static class Program
             Task5.Run,
             Task6.Run,
             Task7.Run,
+            Task8.Run,
         };
         
         while (true)
@@ -36,13 +38,17 @@ internal static class Program
             Console.WriteLine("5. Нахождение пределов рациональной функции T(x) = f1^k(s1(x))/f2^k(s2(x))");
             Console.WriteLine("6. Нахождение асимптотического решения рекуррентного соотношения T(x) = αT(x/β) + x");
             Console.WriteLine("7. Нахождение асимптотического решения рекуррентного соотношения T(x) = αT(x/β) + 2^x");
+            Console.WriteLine("8. Сравнение классического умножения и умножения методом Карацубы");
             Console.WriteLine("0. Выход");
-
+            Console.WriteLine();
+            
             int choice;
             do Console.Write("Выберите задачу: ");
             while (!int.TryParse(Console.ReadLine(), out choice) || choice < 0 || choice > runners.Count);
 
             if (choice == 0) return;
+
+            Console.WriteLine();
             
             runners[choice - 1](args);
             
