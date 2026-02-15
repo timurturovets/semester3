@@ -1,27 +1,9 @@
-﻿using System.Runtime.InteropServices.ComTypes;
-
-namespace helpers;
+﻿namespace helpers;
 
 public class Polynomial(IEnumerable<double> degrees)
 {
     private readonly List<double> _coefficients = degrees.ToList();
     public int Degree => _coefficients.Count - 1;
-
-    public Polynomial ScaleUp(int newDegree)
-    {
-        if (newDegree == Degree) return this;
-        if (newDegree < Degree)
-        {
-            throw new InvalidOperationException("New rank must be bigger than current when scaling up");
-        }
-        
-        
-        var coefficients = new List<double>(_coefficients);
-
-        coefficients.AddRange(Enumerable.Repeat(0.0, newDegree - Degree));
-        
-        return new Polynomial(coefficients);
-    }
 
     public static Polynomial operator +(Polynomial p1, Polynomial p2)
     {
@@ -110,5 +92,46 @@ public class Polynomial(IEnumerable<double> degrees)
         
         polynomial = new Polynomial(coefficients);
         return true;
+    }
+    
+    public Polynomial ScaleUp(int newDegree)
+    {
+        if (newDegree == Degree) return this;
+        if (newDegree < Degree)
+        {
+            throw new InvalidOperationException("New rank must be bigger than current when scaling up");
+        }
+        
+        
+        var coefficients = new List<double>(_coefficients);
+
+        coefficients.AddRange(Enumerable.Repeat(0.0, newDegree - Degree));
+        
+        return new Polynomial(coefficients);
+    }
+
+    public double Evaluate(double x)
+    {
+        var result = 0.0;
+        
+        for (var i = Degree; i >= 0; i--)
+        {
+            result = result * x + this[i];
+        }
+
+        return result;
+    }
+    public Polynomial Derivative()
+    {
+        if (Degree == 0) return new Polynomial([0.0]);
+
+        var coefficients = new double[Degree];
+
+        for (var i = 1; i <= Degree; i++)
+        {
+            coefficients[i - 1] = this[i] * i;
+        }
+        
+        return new Polynomial(coefficients);
     }
 }

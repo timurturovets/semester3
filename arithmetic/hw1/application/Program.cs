@@ -1,0 +1,37 @@
+﻿namespace application;
+using task1;
+using task2;
+
+internal static class Program
+{
+    private delegate void Runner(string[] args);
+    
+    internal static void Main(string[] args)
+    {
+        var runners = new List<Runner>
+        {
+            Task1.Run,
+            Task2.Run
+        };
+        
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("1. Определение принадлежности многочлена линейной оболочке");
+            Console.WriteLine("2. Представление многочлена в виде линейной комбинации степеней");
+            Console.WriteLine("0. Выход");
+
+            int choice;
+            do Console.Write("Выберите задачу: ");
+            while (!int.TryParse(Console.ReadLine(), out choice));
+
+            if (choice == 0) return;
+            
+            runners[choice - 1](args);
+            
+            Console.WriteLine();
+            Console.Write("Нажмите любую кнопку, чтобы продолжить...");
+            Console.ReadKey();
+        }
+    }
+}

@@ -3,11 +3,11 @@
 using helpers;
 
 // ReSharper disable file InconsistentNaming
-internal static class Program
+public static class Task1
 {
-    internal const double EPS = 1e-9;
+    private const double EPS = 1e-9;
 
-    internal static void Main(string[] args)
+    public static void Run(string[] args)
     {
         Polynomial polynomial;
         
