@@ -1,9 +1,11 @@
-﻿namespace helpers;
+﻿using System.Runtime.InteropServices.ComTypes;
+
+namespace helpers;
 
 public class Polynomial(IEnumerable<double> degrees)
 {
     private readonly List<double> _coefficients = degrees.ToList();
-    private int Degree => _coefficients.Count - 1;
+    public int Degree => _coefficients.Count - 1;
 
     public Polynomial ScaleUp(int newDegree)
     {
@@ -82,13 +84,31 @@ public class Polynomial(IEnumerable<double> degrees)
     {
         get
         {
-            if (index < 0 || index >= Degree) throw new IndexOutOfRangeException();
+            if (index < 0 || index > Degree) throw new IndexOutOfRangeException();
             return _coefficients[index];
         }
-        set
+        private set
         {
-            if (index < 0 || index >= Degree) throw new IndexOutOfRangeException();
+            if (index < 0 || index > Degree) throw new IndexOutOfRangeException();
             _coefficients[index] = value;
         }
+    }
+
+    public static bool ReadPolynomial(string? line, out Polynomial? polynomial)
+    {
+        polynomial = null;
+        if (string.IsNullOrWhiteSpace(line)) return false;
+
+        var coefficients = new List<double>();
+        var coefficientsStrings = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+        foreach (var cs in coefficientsStrings)
+        {
+            if (!double.TryParse(cs, out var c)) return false;
+            coefficients.Add(c);
+        }
+        
+        polynomial = new Polynomial(coefficients);
+        return true;
     }
 }
