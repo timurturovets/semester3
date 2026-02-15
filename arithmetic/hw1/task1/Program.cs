@@ -1,18 +1,16 @@
 ﻿namespace task1;
 
 using helpers;
-
+using static helpers.Polynomial;
 // ReSharper disable file InconsistentNaming
 public static class Task1
 {
-    private const double EPS = 1e-9;
-
     public static void Run(string[] args)
     {
         Polynomial polynomial;
         
         Console.Write("Введите через пробел коэффициенты многочлена от меньшей степени к большей: ");
-        while (!Polynomial.ReadPolynomial(Console.ReadLine(), out polynomial!))
+        while (!Polynomial.TryParse(Console.ReadLine(), out polynomial!))
         {
             Console.Write("Некорректный ввод. Введите заново: ");
         }
@@ -26,7 +24,7 @@ public static class Task1
         {
             Polynomial? g;
             Console.Write($"Введите через пробел коэффициенты {i+1}-го многочлена от меньшей степени к большей: ");
-            while (!Polynomial.ReadPolynomial(Console.ReadLine(), out g))
+            while (!Polynomial.TryParse(Console.ReadLine(), out g))
             {
                 Console.Write("Некорректный ввод. Введите заново: ");
             }
@@ -35,7 +33,7 @@ public static class Task1
 
         var (ok, coefficients) = IsInSpan(polynomial, gs);
         
-        if (!ok) Console.WriteLine("Многочлен не принадлежит линейной оболочке.");
+        if (!ok) Console.Write("Многочлен не принадлежит линейной оболочке.");
         else
         {
             Console.WriteLine("Многочлен принадлежит линейной оболочке. Представление:");
