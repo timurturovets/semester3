@@ -7,7 +7,7 @@ using task6;
 using task7;
 using task8;
 using task9;
-
+using Knuth1;
 namespace Application;
 
 internal static class Program
@@ -27,6 +27,7 @@ internal static class Program
             Task7.Run,
             Task8.Run,
             Task9.Run,
+            Task10.Run,
         };
         
         while (true)
@@ -40,8 +41,9 @@ internal static class Program
             Console.WriteLine("5. Нахождение пределов рациональной функции T(x) = f1^k(s1(x))/f2^k(s2(x))");
             Console.WriteLine("6. Нахождение асимптотического решения рекуррентного соотношения T(x) = aT(x/b) + x");
             Console.WriteLine("7. Нахождение асимптотического решения рекуррентного соотношения T(x) = aT(x/b) + 2^x");
-            Console.WriteLine("8. Сравнение классического умножения и умножения методом Карацубы");
-            Console.WriteLine("9. Умножение рекурсивным методом на подобии метода Карацубы");
+            Console.WriteLine("8. (фон цур Гатен) Сравнение классического умножения и умножения методом Карацубы");
+            Console.WriteLine("9. (фон цур Гатен) Умножение рекурсивным методом на подобии метода Карацубы");
+            Console.WriteLine("10. (Кнут) Деление неотрицательного n-разрядного целого числа");
             Console.WriteLine("0. Выход");
             Console.WriteLine();
             
