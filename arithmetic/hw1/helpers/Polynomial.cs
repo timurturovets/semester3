@@ -311,13 +311,22 @@ public class Polynomial(IEnumerable<double> degrees)
         var builder = new StringBuilder();
         for (var i = Degree; i >= 0; i--)
         {
-            if (Math.Abs(_coefficients[i]) < Auxiliary.EPS) continue;
-            if (Math.Abs(_coefficients[i]) - 1 < Auxiliary.EPS) builder.Append("x + ");
-            else if (i == 0) builder.Append($"{_coefficients[i]}");
-            else builder.Append($"{_coefficients[i]}x^{i} + ");
+            switch (Math.Abs(_coefficients[i]))
+            {
+                case < Auxiliary.EPS:
+                    continue;
+                case >= Auxiliary.EPS:
+                    builder.Append($"{_coefficients[i]}");
+                    break;
+            }
+
+            if (i == 0) continue;
+            builder.Append('x');
+            
+            if (i != 1)builder.Append($"^{i}");
+
+            builder.Append(" + ");
         }
-        
-        builder.Remove(builder.Length - 2, 2);
         
         return builder.ToString();
     }
