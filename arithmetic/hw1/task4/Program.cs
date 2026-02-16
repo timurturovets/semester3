@@ -15,11 +15,11 @@ public class Task4
         
         Polynomial g;
         Console.Write("Введите коэффициенты многочлена-знаменателя g(x) от меньшей степени к большей через пробел: ");
-        while (!Polynomial.TryParse(Console.ReadLine(), out g!))
+        while (!Polynomial.TryParse(Console.ReadLine(), out g!) || g.IsZero())
         {
             Console.Write("Некорректный ввод. Введите заново: ");
         }
-
+        
         // ReSharper disable once InconsistentNaming
         double A;
         Console.Write("Введите число A: ");
@@ -28,6 +28,10 @@ public class Task4
             Console.Write("Некорректный ввод. Введите заново: ");
         }
 
+        Console.WriteLine("Введённые многочлены: ");
+        Console.WriteLine($"f(x) = {f}");
+        Console.WriteLine($"g(x) = {g}");
+        
         var rf = new RationalFunction(f, g);
 
         var resultAtPoint = rf.LimitAtPoint(A);

@@ -23,8 +23,11 @@ public class RationalFunction
 
         var fDer = Numerator.Derivative();
         var gDer = Denominator.Derivative();
+        
+        var fDerA = fDer.Evaluate(A);
+        var gDerA = gDer.Evaluate(A);
 
-        if (fDer.IsZero() && gDer.IsZero()) return Limit.Indeterminate();
+        if (Math.Abs(fDerA) < 0 && Math.Abs(gDerA) < 0) return Limit.Indeterminate();
         
         // Лопиталь
         return new RationalFunction(fDer, gDer).LimitAtPoint(A);
