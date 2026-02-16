@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knuth4", "Knuth4\Knuth4.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knuth5", "Knuth5\Knuth5.csproj", "{3518D583-96E1-40E6-8240-05FBA567504D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knuth6", "Knuth6\Knuth6.csproj", "{724B2D37-A329-435B-82A1-01FEAC7F3CD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -102,5 +104,9 @@ Global
 		{3518D583-96E1-40E6-8240-05FBA567504D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3518D583-96E1-40E6-8240-05FBA567504D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3518D583-96E1-40E6-8240-05FBA567504D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{724B2D37-A329-435B-82A1-01FEAC7F3CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{724B2D37-A329-435B-82A1-01FEAC7F3CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{724B2D37-A329-435B-82A1-01FEAC7F3CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{724B2D37-A329-435B-82A1-01FEAC7F3CD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
