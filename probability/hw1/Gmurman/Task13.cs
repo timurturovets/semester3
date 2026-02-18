@@ -1,4 +1,6 @@
-﻿namespace Gmurman;
+﻿using System.Diagnostics;
+
+namespace Gmurman;
 
 internal class Task13
 {
@@ -6,7 +8,7 @@ internal class Task13
     {
         const int total = 100;
         const int taken = 10;
-        const int experiments = 1_000_000;
+        const int experiments = 10_000_000;
 
         var success = 0;
         var rnd = new Random();
@@ -31,21 +33,5 @@ internal class Task13
         }
         
         Console.WriteLine($"Вычисленная вероятность: {(double) success / experiments}");
-        
-        var cppApproachAnalogue = new Func<Random, bool>(r => 
-            Enumerable
-                .Range(1, total)
-                .OrderBy(_ => r.Next())
-                .Take(taken)
-                .Contains(1));
-
-        success = 0;
-        
-        for (var i = 0; i < experiments; i++)
-        {
-            if (cppApproachAnalogue(rnd)) success++;
-        }
-        
-        Console.WriteLine($"Вычисленная вероятность 2: {(double) success / experiments}");
     }
 }
