@@ -17,6 +17,7 @@ public class Gmurman
             { 21, Task21.Run },
             { 22, Task22.Run },
             { 26, Task26.Run },
+            { 27, Task27.Run },
         };
         
         Console.WriteLine("Задачи из пособия Гмурмана");
@@ -29,6 +30,7 @@ public class Gmurman
         Console.WriteLine("21. В коробке пять одинаковых изделий...");
         Console.WriteLine("22. В \"секретном\" замке на общей оси четыре диска...");
         Console.WriteLine("26. На отрезке L длины 20 см...");
+        Console.WriteLine("27. На отрезок OA длины L...");
         Console.WriteLine("0. Выход");
         Console.WriteLine();
         
