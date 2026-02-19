@@ -22,6 +22,7 @@ public class Gmurman
             { 29, Task29.Run },
             { 30, Task30.Run },
             { 32, Task32.Run },
+            { 45, Task45.Run }
         };
         
         Console.WriteLine("Задачи из пособия Гмурмана");
@@ -39,6 +40,7 @@ public class Gmurman
         Console.WriteLine("29. Плоскость разграфлена параллельными прямыми...");
         Console.WriteLine("30. На плоскость с нанесённой сеткой квадратов...");
         Console.WriteLine("32. На плоскости начерчены две концентрические окружности...");
+        Console.WriteLine("45. Наудачу взяты два положительных числа x и y...");
         Console.WriteLine("0. Выход");
         Console.WriteLine();
         

@@ -9,6 +9,7 @@ internal static class Program
         var runners = new List<Runner>
         {
             Gmurman.Gmurman.Run,
+            Task2.Task2.Run
         };
         
         while (true)
@@ -16,6 +17,7 @@ internal static class Program
             Console.Clear();
             Console.WriteLine("Эта программа моделирует вероятностные эксперименты.");
             Console.WriteLine("1. Задачи из пособия Гмурмана");
+            Console.WriteLine("2. Упорядоченный алфавит");
             Console.WriteLine("0. Выход");
             Console.WriteLine();
             
