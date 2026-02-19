@@ -10,6 +10,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Gmurman\Gmurman.csproj" />
       <ProjectReference Include="..\Task2\Task2.csproj" />
+      <ProjectReference Include="..\Task3\Task3.csproj" />
     </ItemGroup>
 
 </Project>
