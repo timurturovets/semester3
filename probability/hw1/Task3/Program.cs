@@ -62,7 +62,7 @@ public class Task3
     }
 
     private static IEnumerable<int[]> GetPermutations(List<int> array)
-    {
+    {   
         var n = array.Count;
         var c = new int[n];
         var a = array.ToArray();

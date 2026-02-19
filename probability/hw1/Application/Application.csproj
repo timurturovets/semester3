@@ -11,6 +11,7 @@
       <ProjectReference Include="..\Gmurman\Gmurman.csproj" />
       <ProjectReference Include="..\Task2\Task2.csproj" />
       <ProjectReference Include="..\Task3\Task3.csproj" />
+      <ProjectReference Include="..\Task4\Task4.csproj" />
     </ItemGroup>
 
 </Project>

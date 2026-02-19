@@ -10,7 +10,9 @@ internal static class Program
         {
             Gmurman.Gmurman.Run,
             Task2.Task2.Run,
-            Task3.Task3.Run
+            Task3.Task3.Run,
+            Task4.Task4.Run,
+            
         };
         
         while (true)
@@ -20,6 +22,7 @@ internal static class Program
             Console.WriteLine("1. Задачи из пособия Гмурмана");
             Console.WriteLine("2. Упорядоченный алфавит");
             Console.WriteLine("3. Перестановки пронумерованных элементов в множестве");
+            Console.WriteLine("4. Эксперимент по бросанию математической монеты");
             Console.WriteLine("0. Выход");
             Console.WriteLine();
             
