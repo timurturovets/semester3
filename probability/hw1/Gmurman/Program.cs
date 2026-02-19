@@ -19,6 +19,7 @@ public class Gmurman
             { 26, Task26.Run },
             { 27, Task27.Run },
             { 28, Task28.Run },
+            { 29, Task29.Run },
         };
         
         Console.WriteLine("Задачи из пособия Гмурмана");
@@ -33,6 +34,7 @@ public class Gmurman
         Console.WriteLine("26. На отрезке L длины 20 см...");
         Console.WriteLine("27. На отрезок OA длины L...");
         Console.WriteLine("28. В круг радиуса R помещён...");
+        Console.WriteLine("29. Плоскость разграфлена параллельными прямыми...");
         Console.WriteLine("0. Выход");
         Console.WriteLine();
         
