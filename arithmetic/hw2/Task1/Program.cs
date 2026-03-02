@@ -7,8 +7,9 @@ public static class Task1
     public static void Run(string[] args)
     {
         const int n = 8;
-        var irreducible = ReadPolynomial(
-            $"Введите модульный многочлен степени {n}: ", expectedDegree: n);
+        var irreducible = BinaryPolynomial.ReadPolynomial(
+            $"Введите модульный многочлен степени {n}: ",
+            expectedDegree: n);
         var field = new Gf2Field(n, irreducible);
 
         var element = ReadElement(
@@ -24,34 +25,10 @@ public static class Task1
         Console.WriteLine($"Элемент (полиномиальная форма): {polynomialForm}");
         Console.WriteLine($"Обратное преобразование в биты: {ToBinaryString(restoredElement)}");
 
-        var fromString = ReadPolynomial(
+        var fromString = BinaryPolynomial.ReadPolynomial(
             "Введите многочлен элемента для перевода в биты (например: x^7 + x^5 + x^3 + x^2 + x): ");
         var fromStringValue = field.PolynomialToElement(fromString);
         Console.WriteLine($"Многочлен '{fromString}' в битовой форме (по модулю f): {ToBinaryString(fromStringValue)}");
-    }
-
-    private static BinaryPolynomial ReadPolynomial(
-        string prompt,
-        int? expectedDegree = null,
-        string? defaultValue = null)
-    {
-        while (true)
-        {
-            Console.Write(prompt);
-            var input = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(input)) input = defaultValue;
-
-            try
-            {
-                var polynomial = BinaryPolynomial.Parse(input ?? string.Empty);
-                if (!expectedDegree.HasValue || polynomial.Degree == expectedDegree.Value) return polynomial;
-                Console.WriteLine($"Ошибка: степень многочлена должна быть равна {expectedDegree.Value}.");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Некорректный ввод многочлена: {e.Message}");
-            }
-        }
     }
 
     private static ulong ReadElement(string prompt, int maxBits)

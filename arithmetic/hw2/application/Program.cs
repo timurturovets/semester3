@@ -1,4 +1,5 @@
 ﻿using task1;
+using task2;
 
 namespace Application;
 
@@ -10,6 +11,7 @@ public class Program
         var runners = new List<Runner>()
         {
             Task1.Run,
+            Task2.Run,
         };
         
         while (true)
@@ -17,6 +19,7 @@ public class Program
             Console.Clear();
             Console.WriteLine("Эта программа решает задачи с применением двоичных многочленов.");
             Console.WriteLine("1. Представление элемента из GF(2^n) в полиномиальной форме и наоборот");
+            Console.WriteLine("2. Умножение двух произвольных двоичных многочленов степени не выше 32");
             Console.WriteLine("0. Выход");
             Console.WriteLine();
             

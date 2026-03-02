@@ -112,4 +112,66 @@ public class BinaryPolynomial(ulong coefficients)
 
         return new BinaryPolynomial(value);
     }
+
+    public static BinaryPolynomial ReadPolynomial(
+        string prompt,
+        int? maxDegree = null,
+        int? expectedDegree = null,
+        string? defaultValue = null)
+    {
+        while (true)
+        {
+            Console.Write(prompt);
+            var input = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                input = defaultValue;
+            }
+
+            try
+            {
+                var polynomial = Parse(input ?? string.Empty);
+                if (expectedDegree.HasValue && polynomial.Degree != expectedDegree.Value)
+                {
+                    Console.WriteLine($"Ошибка: степень многочлена должна быть равна {expectedDegree.Value}.");
+                    continue;
+                }
+
+                if (maxDegree.HasValue && polynomial.Degree > maxDegree.Value)
+                {
+                    Console.WriteLine($"Ошибка: степень многочлена должна быть не выше {maxDegree.Value}.");
+                    continue;
+                }
+
+                return polynomial;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Некорректный ввод многочлена: {e.Message}");
+            }
+        }
+    }
+
+    public static UInt128 MultiplyUpTo32(BinaryPolynomial left, BinaryPolynomial right)
+    {
+        if (left.Degree > 32 || right.Degree > 32)
+        {
+            throw new ArgumentException("Степень каждого множителя должна быть не выше 32.");
+        }
+
+        UInt128 result = 0;
+        var leftValue = left.Coefficients;
+        var rightValue = (UInt128)right.Coefficients;
+        for (var i = 0; i <= 32; i++)
+        {
+            if (((leftValue >> i) & 1UL) == 0UL)
+            {
+                continue;
+            }
+
+            result ^= rightValue << i;
+        }
+
+        return result;
+    }
 }
