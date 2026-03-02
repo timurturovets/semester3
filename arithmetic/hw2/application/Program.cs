@@ -3,6 +3,7 @@ using task2;
 using task3;
 using task4;
 using task5;
+using task6;
 
 namespace Application;
 
@@ -18,6 +19,7 @@ public class Program
             Task3.Run,
             Task4.Run,
             Task5.Run,
+            Task6.Run,
         };
         
         while (true)
@@ -29,6 +31,7 @@ public class Program
             Console.WriteLine("3. Умножение двух элементов GF(2^n) для разных неприводимых многочленов");
             Console.WriteLine("4. Расширенный алгоритм Евклида для GF(2^n)");
             Console.WriteLine("5. Поиск мультипликативно обратного элемента в GF(2^n)");
+            Console.WriteLine("6. (фон цур Гатен) Вычисление z1 / z2 за не более чем 7 умножений/делений");
             Console.WriteLine("0. Выход");
             Console.WriteLine();
             
