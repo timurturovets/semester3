@@ -4,6 +4,7 @@ using task3;
 using task4;
 using task5;
 using task6;
+using task7;
 
 namespace Application;
 
@@ -20,6 +21,7 @@ public class Program
             Task4.Run,
             Task5.Run,
             Task6.Run,
+            Task7.Run,
         };
         
         while (true)
@@ -32,6 +34,7 @@ public class Program
             Console.WriteLine("4. Расширенный алгоритм Евклида для GF(2^n)");
             Console.WriteLine("5. Поиск мультипликативно обратного элемента в GF(2^n)");
             Console.WriteLine("6. (фон цур Гатен) Вычисление z1 / z2 за не более чем 7 умножений/делений");
+            Console.WriteLine("7. (Кормен) Вычисление декартовой суммы множеств A и B");
             Console.WriteLine("0. Выход");
             Console.WriteLine();
             
