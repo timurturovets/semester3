@@ -32,6 +32,41 @@ public sealed class Gf2Field
         return reduced;
     }
 
+    public ulong MultiplyElements(ulong left, ulong right)
+    {
+        if (Degree == 64)
+        {
+            throw new NotSupportedException("Умножение для степени 64 не поддерживается текущим представлением коэффициентов.");
+        }
+
+        var modulusValue = Modulus.Coefficients;
+        var mask = (1UL << Degree) - 1UL;
+
+        var a = Reduce(left);
+        var b = Reduce(right);
+        ulong result = 0UL;
+
+        for (var i = 0; i < Degree; i++)
+        {
+            if ((b & 1UL) == 1UL)
+            {
+                result ^= a;
+            }
+
+            b >>= 1;
+            var carry = ((a >> (Degree - 1)) & 1UL) == 1UL;
+            a <<= 1;
+            if (carry)
+            {
+                a ^= modulusValue;
+            }
+
+            a &= mask;
+        }
+
+        return result & mask;
+    }
+
     private ulong Reduce(ulong polynomial)
     {
         if (Degree == 64)
