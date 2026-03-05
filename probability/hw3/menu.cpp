@@ -3,19 +3,21 @@
 #include <vector>
 
 #include "task1/run.h"
-
+#include "task2/run.h"
 namespace tasks {
     class menu {
     public:
         static void start(int argc, char **argv) {
             std::vector const runners = {
                 task1::run,
+                task2::run,
             };
 
             while (true) {
                 std::system("cls");
                 std::cout << "1. Подсчёт вероятности серий из M кластеров" << std::endl;
-                std::cout << "2. " << std::endl;
+                std::cout << "2. Запустить оконное приложение, моделирующее движения материальной точки" << std::endl;
+                std::cout << "3. Моделирование работы завода по производству продукции" << std::endl;
                 std::cout << "0. Выход" << std::endl;
 
                 int choice = -1;
