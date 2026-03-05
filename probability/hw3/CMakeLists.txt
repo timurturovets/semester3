@@ -21,6 +21,9 @@ add_executable(hw3 main.cpp
         task1/task1.h
         task2/run.h
         task2/task2.cpp
+        task3/task3.h
+        task3/run.h
+        task3/task3.cpp
 )
 
 target_link_libraries(hw3 PRIVATE ${QT_WIDGETS_LIB})

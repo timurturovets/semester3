@@ -1,9 +1,10 @@
-﻿#pragma once
-#include <iostream>
+﻿#include <iostream>
 #include <vector>
 
 #include "task1/run.h"
 #include "task2/run.h"
+#include "task3/run.h"
+
 namespace tasks {
     class menu {
     public:
@@ -11,6 +12,7 @@ namespace tasks {
             std::vector const runners = {
                 task1::run,
                 task2::run,
+                task3::run
             };
 
             while (true) {
