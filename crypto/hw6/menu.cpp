@@ -4,6 +4,7 @@
 
 #include "task1/run.h"
 #include "task2/run.h"
+#include "task3/run.h"
 
 namespace tasks {
     class menu {
@@ -12,12 +13,14 @@ namespace tasks {
             std::vector const runners = {
                 task1::run,
                 task2::run,
+                task3::run
             };
 
             while (true) {
                 std::system("cls");
                 std::cout << "1. Вероятностные тесты простоты Соловея-Штрассена и Миллера-Рабина" << std::endl;
                 std::cout << "2. Генератор открытого и закрытого ключей RSA" << std::endl;
+                std::cout << "3. Шифрование и дешифрование данных алгоритмом RSA" << std::endl;
                 std::cout << "0. Выход" << std::endl;
 
                 int choice = -1;

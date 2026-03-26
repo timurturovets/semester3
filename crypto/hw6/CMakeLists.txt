@@ -10,4 +10,7 @@ add_executable(hw6 main.cpp
         task1/task1.cpp
         task2/task2.h
         task2/task2.cpp
-        task2/run.h)
+        task2/run.h
+        task3/run.h
+        task3/task3.h
+        task3/task3.cpp)
