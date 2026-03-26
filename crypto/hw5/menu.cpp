@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "task1/run.h"
+#include "task2/run.h"
 
 namespace tasks {
     class menu {
@@ -10,11 +11,13 @@ namespace tasks {
         static void start(int argc, char **argv) {
             std::vector const runners = {
                 task1::run,
+                task2::run,
             };
 
             while (true) {
                 std::system("cls");
                 std::cout << "1. Запуск stateless-сервиса с компонетным функционалом" << std::endl;
+                std::cout << "2. Демонстрация вероятностного теста простоты Ферма" << std::endl;
                 std::cout << "0. Выход" << std::endl;
 
                 int choice = -1;
