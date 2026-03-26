@@ -13,8 +13,6 @@ namespace tasks {
             if (std::cin >> choice) return choice;
 
             std::cout << "Некорректный ввод. Введите заново:" << std::endl;
-            std::cin.clear();
-            std::cin.ignore(10000, '\n');
         }
     }
 
@@ -26,8 +24,6 @@ namespace tasks {
             if (std::cin >> value) return value;
 
             std::cout << "Некорректный ввод. Введите заново:" << std::endl;
-            std::cin.clear();
-            std::cin.ignore(10000, '\n');
         }
     }
 
@@ -88,7 +84,12 @@ namespace tasks {
 
                     std::cout << "НОД(" << a << ", " << b << ") = " << result.gcd << std::endl;
                     std::cout << "Коэффициенты Безу: x = " << result.x << ", y = " << result.y << std::endl;
-                    std::cout << "Соотношение Безу: " << a << " * " << result.x << " + " << b << " * " << result.y << " = " << result.gcd << std::endl;
+
+                    std::cout
+                        << "Соотношение Безу: "
+                        << a << " * " << result.x
+                        << " + " << b << " * " << result.y
+                        << " = " << result.gcd << std::endl;
 
                     continue;
                 }
