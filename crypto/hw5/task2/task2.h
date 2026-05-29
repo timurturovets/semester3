@@ -26,7 +26,8 @@ namespace tasks {
         [[nodiscard]] virtual double composite_witness_probability() const = 0;
     };
 
-    class fermat_primality_test final : public abstract_probabilistic_primality_test {
+    class fermat_primality_test final
+        : public abstract_probabilistic_primality_test {
     protected:
         bool run_iteration(std::int64_t value, std::int64_t witness) override;
         [[nodiscard]] double composite_witness_probability() const override;
