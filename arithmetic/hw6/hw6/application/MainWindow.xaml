@@ -1,0 +1,208 @@
+<Window x:Class="application.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Визуализатор мономиальных идеалов"
+        Width="1500"
+        Height="920"
+        MinWidth="1200"
+        MinHeight="760"
+        Background="#F4F1EA">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="410" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0"
+                Padding="20"
+                Background="#FBF8F2"
+                BorderBrush="#D3C7B6"
+                BorderThickness="1"
+                CornerRadius="18">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock FontFamily="Georgia"
+                               FontSize="28"
+                               Foreground="#23303B"
+                               Text="Мономиальный идеал" />
+                    <TextBlock Margin="0,8,0,18"
+                               TextWrapping="Wrap"
+                               Foreground="#4C5A64"
+                               FontSize="14"
+                               Text="Задайте образующие мономиального идеала I в k[x, y]. Приложение строит точки решётки для пункта (a) и возможные мономы остатка для пункта (b)." />
+
+                    <TextBlock FontWeight="SemiBold"
+                               Foreground="#23303B"
+                               Text="Текстовый ввод" />
+                    <TextBox x:Name="MonomialInputTextBox"
+                             Margin="0,8,0,10"
+                             Height="88"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"
+                             VerticalScrollBarVisibility="Auto"
+                             FontSize="15"
+                             Text="x^6, x^2y^3, x^7" />
+
+                    <WrapPanel Margin="0,0,0,18">
+                        <Button Width="170"
+                                Height="34"
+                                Margin="0,0,10,0"
+                                Click="ParseTextButton_OnClick"
+                                Background="#2F5D62"
+                                Foreground="White"
+                                BorderThickness="0"
+                                Content="Разобрать текст" />
+                        <Button Width="170"
+                                Height="34"
+                                Click="BuildButton_OnClick"
+                                Background="#9C6644"
+                                Foreground="White"
+                                BorderThickness="0"
+                                Content="Построить" />
+                    </WrapPanel>
+
+                    <TextBlock Margin="0,0,0,6"
+                               FontWeight="SemiBold"
+                               Foreground="#23303B"
+                               Text="Таблица образующих" />
+                    <DataGrid x:Name="GeneratorsGrid"
+                              Height="270"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              HeadersVisibility="Column"
+                              RowHeaderWidth="0"
+                              GridLinesVisibility="Horizontal"
+                              Background="White">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Степень x"
+                                                Binding="{Binding XExponent, UpdateSourceTrigger=PropertyChanged}"
+                                                Width="*" />
+                            <DataGridTextColumn Header="Степень y"
+                                                Binding="{Binding YExponent, UpdateSourceTrigger=PropertyChanged}"
+                                                Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <WrapPanel Margin="0,10,0,18">
+                        <Button Width="110"
+                                Height="32"
+                                Margin="0,0,10,0"
+                                Click="AddGeneratorButton_OnClick"
+                                Background="#3F7D58"
+                                Foreground="White"
+                                BorderThickness="0"
+                                Content="Добавить" />
+                        <Button Width="140"
+                                Height="32"
+                                Click="RemoveGeneratorButton_OnClick"
+                                Background="#B85042"
+                                Foreground="White"
+                                BorderThickness="0"
+                                Content="Удалить" />
+                    </WrapPanel>
+
+                    <Border Padding="14"
+                            Background="#FFF7E8"
+                            BorderBrush="#E2C48D"
+                            BorderThickness="1"
+                            CornerRadius="12">
+                        <StackPanel>
+                            <TextBlock FontWeight="SemiBold"
+                                       Foreground="#6C4B1F"
+                                       Text="Автограницы" />
+                            <TextBlock x:Name="BoundsTextBlock"
+                                       Margin="0,6,0,0"
+                                       TextWrapping="Wrap"
+                                       Foreground="#6C4B1F"
+                                       Text="Границы будут вычислены по заданным образующим." />
+                        </StackPanel>
+                    </Border>
+
+                    <Border Margin="0,18,0,0"
+                            Padding="14"
+                            Background="#F9EAEA"
+                            BorderBrush="#D7A7A1"
+                            BorderThickness="1"
+                            CornerRadius="12">
+                        <TextBlock x:Name="StatusTextBlock"
+                                   TextWrapping="Wrap"
+                                   Foreground="#7B2E2E"
+                                   Text="Готово." />
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock FontFamily="Georgia"
+                       FontSize="30"
+                       Foreground="#23303B"
+                       Text="Визуализация" />
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0"
+                        Padding="16"
+                        Background="#FBF8F2"
+                        BorderBrush="#D3C7B6"
+                        BorderThickness="1"
+                        CornerRadius="18">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="8" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock FontSize="20"
+                                   FontWeight="SemiBold"
+                                   Foreground="#23303B"
+                                   Text="(a) Мономы, принадлежащие I" />
+                        <ScrollViewer Grid.Row="2"
+                                      HorizontalScrollBarVisibility="Auto"
+                                      VerticalScrollBarVisibility="Auto">
+                            <Canvas x:Name="IdealCanvas"
+                                    Background="#FFFDF8" />
+                        </ScrollViewer>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Column="2"
+                        Padding="16"
+                        Background="#FBF8F2"
+                        BorderBrush="#D3C7B6"
+                        BorderThickness="1"
+                        CornerRadius="18">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="8" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock FontSize="20"
+                                   FontWeight="SemiBold"
+                                   Foreground="#23303B"
+                                   Text="(b) Мономы, которые могут остаться в остатке" />
+                        <ScrollViewer Grid.Row="2"
+                                      HorizontalScrollBarVisibility="Auto"
+                                      VerticalScrollBarVisibility="Auto">
+                            <Canvas x:Name="RemainderCanvas"
+                                    Background="#FFFDF8" />
+                        </ScrollViewer>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
